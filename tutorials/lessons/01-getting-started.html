@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started with Python | Python for Complete Beginners</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/editor-styles.css">
+    
+    <!-- Brython Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+</head>
+<body onload="brython({debug: 1})">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>A step-by-step guide to learning Python with no prior programming experience</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="01-getting-started.html">Lessons</a></li>
+            <li><a href="exercises.html">Exercises</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="lesson-content">
+            <h2>Lesson 1: Getting Started with Python</h2>
+            
+            <div class="note">
+                <p><strong>In this lesson:</strong> We'll learn what Python is, how to install it, and how to write your very first Python program.</p>
+            </div>
+
+            <h3>What is Python?</h3>
+            
+            <p>Python is a popular programming language that's easy to learn and used by many people around the world. It's like a special language you can use to talk to your computer and tell it what to do!</p>
+            
+            <p>Python is used for many things like:</p>
+            
+            <ul>
+                <li>Creating websites</li>
+                <li>Analyzing data</li>
+                <li>Making games</li>
+                <li>Controlling robots</li>
+                <li>And much more!</li>
+            </ul>
+            
+            <p>People love Python because it's:</p>
+            
+            <ul>
+                <li><strong>Easy to read:</strong> Python code looks a lot like English, which makes it easier to understand.</li>
+                <li><strong>Beginner-friendly:</strong> You don't need to write a lot of code to get things done.</li>
+                <li><strong>Powerful:</strong> Despite being easy to learn, Python can do amazing things!</li>
+            </ul>
+
+            <h3>Installing Python</h3>
+            
+            <p>Before you can start writing Python code, you need to install Python on your computer.</p>
+            
+            <div class="note">
+                <p><strong>Good news:</strong> For this tutorial, you don't need to install Python! You can use the interactive code editors on this page to write and run Python code directly in your web browser.</p>
+            </div>
+            
+            <p>However, if you want to install Python on your computer for more serious projects, follow these steps:</p>
+            
+            <ol>
+                <li>Go to the official Python website: <a href="https://www.python.org/downloads/" target="_blank">python.org/downloads</a></li>
+                <li>Download the latest version for your operating system (Windows, Mac, or Linux)</li>
+                <li>Run the installer and make sure to check the box that says "Add Python to PATH" during installation</li>
+                <li>Follow the installation instructions</li>
+            </ol>
+            
+            <div class="warning">
+                <p><strong>Important:</strong> On Windows, don't forget to check "Add Python to PATH" during installation! This allows you to run Python from anywhere on your computer.</p>
+            </div>
+
+            <h3>Your First Python Program</h3>
+            
+            <p>Now let's write your very first program in Python! Traditionally, the first program in any language is a simple "Hello, World!" program that displays that message.</p>
+            
+            <p>Here's how to write it in Python:</p>
+            
+            <pre><code>print("Hello, World!")</code></pre>
+            
+            <p>That's it! Just one line of code. Let's break down what this does:</p>
+            
+            <ul>
+                <li><code>print</code> is a Python command (or "function") that tells the computer to display something.</li>
+                <li><code>("Hello, World!")</code> is what we want to display. The text is enclosed in quotation marks.</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Try it yourself!</strong> Use the editor below to run your first Python program:</p>
+            </div>
+
+            <div class="editor-container" id="editor-1">
+                <div class="editor-header">
+                    <span>Python Code Editor</span>
+                    <div class="editor-buttons">
+                        <button id="run-btn-1" class="run-btn">Run Code</button>
+                        <button id="reset-btn-1" class="reset-btn">Reset</button>
+                    </div>
+                </div>
+                <textarea id="code-editor-1" class="code-editor">print("Hello, World!")
+
+# Try changing the message to your name!
+print("Hello, YOUR_NAME!")
+
+# You can print multiple lines
+print("I am learning Python!")
+print("This is my first program.")</textarea>
+                <div class="output-header">Output:</div>
+                <div id="code-output-1" class="code-output"></div>
+            </div>
+
+            <div class="note">
+                <p><strong>What happened?</strong> When you ran the code, Python displayed the text "Hello, World!" and any other messages you added. Congratulations! You've just written and run your first Python program!</p>
+            </div>
+
+            <h3>Understanding Python Programs</h3>
+            
+            <p>Let's try a slightly more complex program:</p>
+            
+            <div class="editor-container" id="editor-2">
+                <div class="editor-header">
+                    <span>Python Code Editor</span>
+                    <div class="editor-buttons">
+                        <button id="run-btn-2" class="run-btn">Run Code</button>
+                        <button id="reset-btn-2" class="reset-btn">Reset</button>
+                    </div>
+                </div>
+                <textarea id="code-editor-2" class="code-editor"># This program shows some basic Python concepts
+
+# 1. We can display messages
+print("Welcome to Python Programming!")
+
+# 2. We can perform math operations
+print("3 + 5 =", 3 + 5)
+print("10 - 2 =", 10 - 2)
+print("4 × 3 =", 4 * 3)
+print("20 ÷ 4 =", 20 / 4)
+
+# 3. We can create and use variables
+name = "Python Learner"
+print("Hello,", name, "!")
+
+# 4. We can make decisions (we'll learn more about this later)
+hour = 14  # 2 PM in 24-hour time
+if hour < 12:
+    print("Good morning!")
+else:
+    print("Good afternoon or evening!")</textarea>
+                <div class="output-header">Output:</div>
+                <div id="code-output-2" class="code-output"></div>
+            </div>
+
+            <p>Don't worry if some parts don't make sense yet! We'll cover all these concepts in detail in upcoming lessons.</p>
+
+            <h3>Summary</h3>
+            
+            <p>In this lesson, you learned:</p>
+            
+            <ul>
+                <li>What Python is and why it's popular</li>
+                <li>How to install Python (optional)</li>
+                <li>How to write and run your first Python program</li>
+                <li>A preview of some basic Python features</li>
+            </ul>
+            
+            <div class="note">
+                <p><strong>Practice:</strong> Try modifying the programs in the interactive editors above. Change the messages, add new print statements, or try simple math operations. The best way to learn programming is by experimenting!</p>
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="../index.html" class="btn">Previous: Home</a>
+                <a href="02-python-basics.html" class="btn">Next: Python Basics</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+
+    <script type="text/python">
+    from browser import document, console
+    import sys
+    
+    # Store the original code for each editor
+    original_code_1 = document["code-editor-1"].value
+    original_code_2 = document["code-editor-2"].value
+    
+    # Custom output handler
+    class OutputHandler:
+        def __init__(self, element_id):
+            self.element = document[element_id]
+            
+        def write(self, text):
+            self.element.innerHTML += text.replace("\n", "<br>")
+            
+        def flush(self):
+            pass
+    
+    # Function to run the code for editor 1
+    def run_code_1(event):
+        # Clear the output
+        document["code-output-1"].innerHTML = ""
+        
+        # Get the code from the editor
+        code = document["code-editor-1"].value
+        
+        # Store original stdout and stderr
+        original_stdout = sys.stdout
+        original_stderr = sys.stderr
+        
+        try:
+            # Redirect output
+            sys.stdout = OutputHandler("code-output-1")
+            sys.stderr = OutputHandler("code-output-1")
+            
+            # Execute the code
+            exec(code)
+            
+        except Exception as e:
+            document["code-output-1"].innerHTML += f'<span style="color: red;">Error: {str(e)}</span>'
+            
+        finally:
+            # Restore stdout and stderr
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
+    
+    # Function to reset editor 1
+    def reset_code_1(event):
+        document["code-editor-1"].value = original_code_1
+        document["code-output-1"].innerHTML = ""
+    
+    # Function to run the code for editor 2
+    def run_code_2(event):
+        # Clear the output
+        document["code-output-2"].innerHTML = ""
+        
+        # Get the code from the editor
+        code = document["code-editor-2"].value
+        
+        # Store original stdout and stderr
+        original_stdout = sys.stdout
+        original_stderr = sys.stderr
+        
+        try:
+            # Redirect output
+            sys.stdout = OutputHandler("code-output-2")
+            sys.stderr = OutputHandler("code-output-2")
+            
+            # Execute the code
+            exec(code)
+            
+        except Exception as e:
+            document["code-output-2"].innerHTML += f'<span style="color: red;">Error: {str(e)}</span>'
+            
+        finally:
+            # Restore stdout and stderr
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
+    
+    # Function to reset editor 2
+    def reset_code_2(event):
+        document["code-editor-2"].value = original_code_2
+        document["code-output-2"].innerHTML = ""
+    
+    # Attach event handlers
+    document["run-btn-1"].bind("click", run_code_1)
+    document["reset-btn-1"].bind("click", reset_code_1)
+    document["run-btn-2"].bind("click", run_code_2)
+    document["reset-btn-2"].bind("click", reset_code_2)
+    </script>
+</body>
+</html> 

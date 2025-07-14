@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Exercises | Python for Complete Beginners</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/editor-styles.css">
+    <!-- Brython CDN Links -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+    <style>
+        .exercise {
+            background-color: #f8f9fa;
+            border-left: 4px solid #6c757d;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .solution {
+            background-color: #f0f8ff;
+            border-left: 4px solid #4682b4;
+            padding: 15px;
+            margin: 10px 0;
+            display: none;
+        }
+        
+        .show-solution {
+            background-color: #4682b4;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        
+        .show-solution:hover {
+            background-color: #36648b;
+        }
+    </style>
+    <script type="text/python">
+        from browser import document, window, html
+        import sys
+        
+        def run_code(event, editor_id):
+            editor = document[editor_id]
+            output_id = editor_id.replace("editor", "output")
+            output = document[output_id]
+            
+            # Clear the output area
+            output.clear()
+            
+            # Get the code from editor
+            code = editor.value
+            
+            try:
+                # Redirect stdout to capture print statements
+                old_stdout = sys.stdout
+                sys.stdout = buffer = StringIO()
+                
+                # Execute the code
+                exec(code)
+                
+                # Get the output and display it
+                output_text = buffer.getvalue()
+                if output_text:
+                    output.text = output_text
+                else:
+                    output.text = "Code executed successfully with no output."
+                
+                # Restore stdout
+                sys.stdout = old_stdout
+                
+            except Exception as e:
+                output.text = f"Error: {e}"
+        
+        def reset_editor(event, editor_id, default_code):
+            editor = document[editor_id]
+            output_id = editor_id.replace("editor", "output")
+            output = document[output_id]
+            
+            # Reset the editor content
+            editor.value = default_code
+            
+            # Clear the output
+            output.clear()
+            output.text = "Output will appear here..."
+            
+        # StringIO class to capture stdout
+        class StringIO:
+            def __init__(self):
+                self.buffer = []
+                
+            def write(self, s):
+                self.buffer.append(str(s))
+                
+            def getvalue(self):
+                return "".join(self.buffer)
+        
+        def setup_editors():
+            # Find any code editors on this page
+            editors = document.select("textarea.code-editor")
+            
+            # Set up each editor with its run and reset buttons
+            for editor in editors:
+                editor_id = editor.id
+                output_id = editor_id.replace("editor", "output")
+                run_button_id = editor_id.replace("editor", "run")
+                reset_button_id = editor_id.replace("editor", "reset")
+                
+                # Get default code from the editor
+                default_code = editor.value
+                
+                # Set up the run button
+                if document[run_button_id]:
+                    run_button = document[run_button_id]
+                    run_button.bind("click", lambda e, eid=editor_id: run_code(e, eid))
+                
+                # Set up the reset button
+                if document[reset_button_id]:
+                    reset_button = document[reset_button_id]
+                    reset_button.bind("click", lambda e, eid=editor_id, dc=default_code: reset_editor(e, eid, dc))
+            
+        # Setup all editors when the page loads
+        document.addEventListener("DOMContentLoaded", lambda event: setup_editors())
+    </script>
+</head>
+<body onload="brython({debug: 1, indexedDB: false})">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>A step-by-step guide to learning Python with no prior programming experience</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="01-getting-started.html">Lessons</a></li>
+            <li><a href="exercises.html">Exercises</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="lesson-content">
+            <h2>Practice Exercises</h2>
+            
+            <p>The best way to learn programming is through practice! This page contains additional exercises for each lesson to help reinforce what you've learned.</p>
+            
+            <div class="note">
+                <p><strong>Tip:</strong> Try to solve each exercise on your own before looking at the solution. If you get stuck, review the lesson material first, then peek at the solution.</p>
+            </div>
+            
+            <h3>Lesson 1: Getting Started with Python</h3>
+            
+            <div class="exercise">
+                <h4>Exercise 1: Your First Program</h4>
+                <p>Create a Python program that prints a welcome message followed by your name on a separate line.</p>
+                <button class="show-solution" onclick="toggleSolution('solution1')">Show Solution</button>
+                <div id="solution1" class="solution">
+                    <pre><code># Welcome message program
+print("Welcome to Python Programming!")
+print("My name is Alice.")</code></pre>
+                    <p>Alternative solution using multiple lines:</p>
+                    <pre><code>print("Welcome to Python Programming!\nMy name is Alice.")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercise 2: Python as a Calculator</h4>
+                <p>Using Python's interactive mode, calculate:</p>
+                <ol>
+                    <li>The sum of 583 and 127</li>
+                    <li>The result of 1024 divided by 16</li>
+                    <li>The remainder when 45 is divided by 7</li>
+                    <li>5 raised to the power of 3</li>
+                </ol>
+                <button class="show-solution" onclick="toggleSolution('solution2')">Show Solution</button>
+                <div id="solution2" class="solution">
+                    <pre><code>>>> 583 + 127
+710
+>>> 1024 / 16
+64.0
+>>> 45 % 7
+3
+>>> 5 ** 3
+125</code></pre>
+                </div>
+            </div>
+            
+            <h3>Lesson 2: Python Basics</h3>
+            
+            <div class="exercise">
+                <h4>Exercise 1: Age Calculator</h4>
+                <p>Write a program that asks for the user's name and birth year, then calculates and prints how old they will be at the end of the current year.</p>
+                <button class="show-solution" onclick="toggleSolution('solution3')">Show Solution</button>
+                <div id="solution3" class="solution">
+                    <pre><code># Age calculator program
+name = input("What is your name? ")
+birth_year = input("What year were you born? ")
+
+# Convert the birth year to an integer
+birth_year = int(birth_year)
+
+# Calculate age at the end of current year (assuming current year is 2023)
+current_year = 2023
+age_end_of_year = current_year - birth_year
+
+# Print the result
+print(f"Hello, {name}! By the end of {current_year}, you will be {age_end_of_year} years old.")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercise 2: Distance Converter</h4>
+                <p>Create a program that converts distance from kilometers to miles. (1 kilometer is approximately 0.621371 miles)</p>
+                <button class="show-solution" onclick="toggleSolution('solution4')">Show Solution</button>
+                <div id="solution4" class="solution">
+                    <pre><code># Distance converter
+print("Kilometer to Mile Converter")
+kilometers = input("Enter distance in kilometers: ")
+
+# Convert input string to float
+kilometers = float(kilometers)
+
+# Convert kilometers to miles
+miles = kilometers * 0.621371
+
+# Print the result (rounded to 2 decimal places)
+print(f"{kilometers} kilometers is equal to {miles:.2f} miles.")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercise 3: String Manipulation</h4>
+                <p>Write a program that asks the user for their full name, then prints:</p>
+                <ol>
+                    <li>Their name in all uppercase letters</li>
+                    <li>Their name in all lowercase letters</li>
+                    <li>The number of characters in their name (including spaces)</li>
+                    <li>Their initials (first letter of each word in their name)</li>
+                </ol>
+                <button class="show-solution" onclick="toggleSolution('solution5')">Show Solution</button>
+                <div id="solution5" class="solution">
+                    <pre><code># String manipulation program
+full_name = input("Please enter your full name: ")
+
+# Print name in uppercase
+print(f"Your name in uppercase: {full_name.upper()}")
+
+# Print name in lowercase
+print(f"Your name in lowercase: {full_name.lower()}")
+
+# Print the number of characters
+print(f"Number of characters in your name: {len(full_name)}")
+
+# Get initials (first letter of each word)
+words = full_name.split()
+initials = ""
+for word in words:
+    if word:  # Check if the word is not empty
+        initials += word[0]
+
+print(f"Your initials: {initials.upper()}")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Exercise 4: Simple Calculator</h4>
+                <p>Create a basic calculator that asks the user for two numbers and an operation (addition, subtraction, multiplication, or division), then performs the calculation and displays the result.</p>
+                <button class="show-solution" onclick="toggleSolution('solution6')">Show Solution</button>
+                <div id="solution6" class="solution">
+                    <pre><code># Simple calculator
+print("Simple Calculator")
+print("----------------")
+
+# Get first number
+num1 = input("Enter the first number: ")
+num1 = float(num1)
+
+# Get second number
+num2 = input("Enter the second number: ")
+num2 = float(num2)
+
+# Get operation
+print("Select operation:")
+print("1. Addition (+)")
+print("2. Subtraction (-)")
+print("3. Multiplication (*)")
+print("4. Division (/)")
+operation = input("Enter operation number (1-4): ")
+
+# Perform calculation based on selected operation
+if operation == "1":
+    result = num1 + num2
+    op_symbol = "+"
+elif operation == "2":
+    result = num1 - num2
+    op_symbol = "-"
+elif operation == "3":
+    result = num1 * num2
+    op_symbol = "*"
+elif operation == "4":
+    # Check for division by zero
+    if num2 == 0:
+        print("Error: Cannot divide by zero")
+        result = "undefined"
+        op_symbol = "/"
+    else:
+        result = num1 / num2
+        op_symbol = "/"
+else:
+    print("Invalid operation selected")
+    result = "undefined"
+    op_symbol = "?"
+
+# Print the result
+print(f"{num1} {op_symbol} {num2} = {result}")</code></pre>
+                </div>
+            </div>
+            
+            <h3>Additional Challenges</h3>
+            
+            <div class="exercise">
+                <h4>Challenge 1: Temperature Converter App</h4>
+                <p>Create a temperature conversion program that allows the user to:</p>
+                <ol>
+                    <li>Convert Celsius to Fahrenheit (F = (C × 9/5) + 32)</li>
+                    <li>Convert Fahrenheit to Celsius (C = (F - 32) × 5/9)</li>
+                    <li>Convert Celsius to Kelvin (K = C + 273.15)</li>
+                </ol>
+                <p>The program should present a menu for the user to select which conversion they want to perform.</p>
+                <button class="show-solution" onclick="toggleSolution('challenge1')">Show Solution</button>
+                <div id="challenge1" class="solution">
+                    <pre><code># Temperature Converter App
+print("Temperature Converter")
+print("--------------------")
+print("1. Celsius to Fahrenheit")
+print("2. Fahrenheit to Celsius")
+print("3. Celsius to Kelvin")
+
+# Get user choice
+choice = input("Enter your choice (1-3): ")
+
+# Process based on user choice
+if choice == "1":
+    # Celsius to Fahrenheit
+    celsius = float(input("Enter temperature in Celsius: "))
+    fahrenheit = (celsius * 9/5) + 32
+    print(f"{celsius}°C is equal to {fahrenheit:.2f}°F")
+    
+elif choice == "2":
+    # Fahrenheit to Celsius
+    fahrenheit = float(input("Enter temperature in Fahrenheit: "))
+    celsius = (fahrenheit - 32) * 5/9
+    print(f"{fahrenheit}°F is equal to {celsius:.2f}°C")
+    
+elif choice == "3":
+    # Celsius to Kelvin
+    celsius = float(input("Enter temperature in Celsius: "))
+    kelvin = celsius + 273.15
+    print(f"{celsius}°C is equal to {kelvin:.2f}K")
+    
+else:
+    print("Invalid choice. Please select 1, 2, or 3.")</code></pre>
+                </div>
+            </div>
+            
+            <div class="exercise">
+                <h4>Challenge 2: Tip Calculator</h4>
+                <p>Create a program that calculates the tip amount and total bill for a meal at a restaurant.</p>
+                <ol>
+                    <li>Ask the user for the bill amount</li>
+                    <li>Ask the user for the tip percentage (15%, 18%, 20%, etc.)</li>
+                    <li>Calculate and display the tip amount</li>
+                    <li>Calculate and display the total bill (original bill + tip)</li>
+                </ol>
+                <button class="show-solution" onclick="toggleSolution('challenge2')">Show Solution</button>
+                <div id="challenge2" class="solution">
+                    <pre><code># Tip Calculator
+print("Restaurant Tip Calculator")
+print("------------------------")
+
+# Get bill amount
+bill = input("Enter the bill amount: $")
+bill = float(bill)
+
+# Get tip percentage
+tip_percent = input("Enter the tip percentage (without the % sign): ")
+tip_percent = float(tip_percent)
+
+# Calculate tip amount
+tip_amount = bill * (tip_percent / 100)
+
+# Calculate total bill
+total_bill = bill + tip_amount
+
+# Display results
+print(f"Bill amount: ${bill:.2f}")
+print(f"Tip percentage: {tip_percent}%")
+print(f"Tip amount: ${tip_amount:.2f}")
+print(f"Total bill: ${total_bill:.2f}")</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+    
+    <script>
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            if (solution.style.display === "block") {
+                solution.style.display = "none";
+            } else {
+                solution.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Basics | Python for Complete Beginners</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/editor-styles.css">
+    
+    <!-- Brython Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+</head>
+<body onload="brython({debug: 1})">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>A step-by-step guide to learning Python with no prior programming experience</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="01-getting-started.html">Lessons</a></li>
+            <li><a href="exercises.html">Exercises</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="lesson-content">
+            <h2>Lesson 2: Python Basics</h2>
+            
+            <div class="note">
+                <p><strong>In this lesson:</strong> We'll learn about the basic building blocks of Python programming, like how to store information and perform simple operations with it.</p>
+            </div>
+
+            <h3>Comments in Python: Adding Notes to Your Code</h3>
+            
+            <p>When you write programs, it's helpful to add notes to explain what your code does. These notes are called <strong>comments</strong>, and the computer ignores them when running your code.</p>
+            
+            <p>Think of comments like sticky notes you attach to your code. They help you and others understand what's going on.</p>
+            
+            <pre><code># This is a single-line comment in Python
+print("Hello, World!")  # You can also put comments at the end of a line
+
+"""
+This is a multi-line comment (also called a docstring).
+You can write as many lines as you want between the triple quotes.
+It's great for longer explanations.
+"""</code></pre>
+
+            <div class="note">
+                <p><strong>Try it yourself!</strong> Use the editor below to practice writing and running comments:</p>
+            </div>
+
+            <div class="interactive-python" data-code="# Try writing your own comments
+# Single line comment
+
+"""
+Multi-line comment
+Write anything you want here
+"""
+
+# Now let's print something to see the output
+print('Comments are ignored by Python!')
+print('This text will appear in the output')">
+            </div>
+
+            <div class="note">
+                <p><strong>Why use comments?</strong> Comments help you remember why you wrote code a certain way. They're like notes to your future self and to others who might read your code.</p>
+            </div>
+            
+            <h3>Variables: Storing Information</h3>
+            
+            <p>Variables are like labeled containers that store data. Imagine having different boxes where you store different items - that's what variables do for your data!</p>
+            
+            <p>In Python, you create a variable by giving it a name, then using the equals sign (=) to assign a value to it.</p>
+            
+            <pre><code># Creating variables - notice the pattern: name = value
+name = "Alice"    # A string (text)
+age = 25          # An integer (whole number)
+height = 5.7      # A float (decimal number)
+is_student = True  # A boolean (True or False)</code></pre>
+
+            <p>Once you've created a variable, you can use it in your program:</p>
+            
+            <pre><code># Using variables
+print(name)                   # Prints: Alice
+print(age)                    # Prints: 25
+print("Name:", name, "Age:", age)  # Prints: Name: Alice Age: 25
+
+# You can change a variable's value anytime
+age = 26
+print("New age:", age)        # Prints: New age: 26</code></pre>
+
+            <div class="interactive-python" data-code="# Try creating your own variables
+name = 'Your Name'
+age = 20
+favorite_color = 'blue'
+
+# Now use them in print statements
+print('Hello, my name is', name)
+print('I am', age, 'years old')
+print('My favorite color is', favorite_color)
+
+# Try changing a variable's value
+age = 21
+print('Next year I will be', age)">
+            </div>
+
+            <div class="note">
+                <p><strong>Think of it like:</strong> If you have a box labeled "age", you can put the number 25 inside it. Later, you can replace it with 26.</p>
+            </div>
+
+            <h3>Naming Variables: Rules to Follow</h3>
+
+            <p>Variable names in Python need to follow certain rules:</p>
+
+            <ul>
+                <li>Can contain letters, numbers, and underscores (_)</li>
+                <li>Must start with a letter or underscore (not a number)</li>
+                <li>Cannot use Python's reserved words (like <code>print</code>, <code>if</code>, or <code>for</code>)</li>
+                <li>Are case-sensitive (so <code>name</code> and <code>Name</code> are different variables)</li>
+            </ul>
+
+            <pre><code># Good variable names
+user_name = "John"
+age1 = 30
+_private_data = "secret"
+
+# Not allowed (would cause errors)
+# 1st_place = "Gold"  # Cannot start with a number
+# print = "Hello"     # 'print' is a reserved word
+# user-name = "John"  # Cannot use hyphens</code></pre>
+
+            <div class="warning">
+                <p><strong>Tip:</strong> Use descriptive variable names that explain what the data represents. <code>user_age</code> is better than just <code>a</code> because it's clear what it means!</p>
+            </div>
+            
+            <h3>Basic Data Types in Python</h3>
+            
+            <p>Python has several basic data types that store different kinds of information:</p>
+            
+            <div style="overflow-x: auto;">
+                <table border="1" style="width: 100%; border-collapse: collapse;">
+                    <tr style="background-color: #f0f0f0;">
+                        <th style="padding: 10px;">Data Type</th>
+                        <th style="padding: 10px;">Description</th>
+                        <th style="padding: 10px;">Examples</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>Strings</strong></td>
+                        <td style="padding: 10px;">Text enclosed in quotes (single or double)</td>
+                        <td style="padding: 10px;"><code>"Hello"</code>, <code>'Python'</code>, <code>"123"</code></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>Integers</strong></td>
+                        <td style="padding: 10px;">Whole numbers without decimals</td>
+                        <td style="padding: 10px;"><code>42</code>, <code>-7</code>, <code>1000</code></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>Floats</strong></td>
+                        <td style="padding: 10px;">Numbers with decimals</td>
+                        <td style="padding: 10px;"><code>3.14</code>, <code>-0.5</code>, <code>2.0</code></td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><strong>Booleans</strong></td>
+                        <td style="padding: 10px;">True or False values</td>
+                        <td style="padding: 10px;"><code>True</code>, <code>False</code></td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>Checking Data Types</h3>
+
+            <p>You can check what type of data a variable holds using the <code>type()</code> function:</p>
+
+            <pre><code># Checking data types
+name = "Alice"
+age = 25
+height = 5.7
+is_student = True
+
+print(type(name))       # Prints: <class 'str'> (string)
+print(type(age))        # Prints: <class 'int'> (integer)
+print(type(height))     # Prints: <class 'float'> (floating-point number)
+print(type(is_student)) # Prints: <class 'bool'> (boolean)</code></pre>
+            
+            <h3>Working with Strings: Text in Python</h3>
+            
+            <p>Strings are sequences of characters (letters, numbers, symbols) enclosed in quotes. They're how Python represents text.</p>
+            
+            <h4>Creating Strings</h4>
+            
+            <pre><code># You can use single quotes or double quotes
+first_name = "John"
+last_name = 'Doe'  # Both work the same way
+
+# For quotes inside strings, use the other type of quote
+message1 = "He said, 'Python is fun!'"
+message2 = 'She replied, "I agree!"'
+
+# Or escape quotes with backslash
+message3 = "He said, \"Python is amazing!\""</code></pre>
+
+            <h4>Combining Strings (Concatenation)</h4>
+            
+            <pre><code># Adding strings together (concatenation)
+first_name = "John"
+last_name = "Doe"
+
+# Using the + operator to combine strings
+full_name = first_name + " " + last_name
+print(full_name)  # Prints: John Doe
+
+# Another way to combine text and variables (f-strings - Python 3.6+)
+greeting = f"Hello, {first_name}! How are you today?"
+print(greeting)  # Prints: Hello, John! How are you today?</code></pre>
+
+            <div class="note">
+                <p><strong>Tip:</strong> The <code>f"..."</code> format (called f-strings) is a convenient way to embed variables inside text!</p>
+            </div>
+
+            <h4>Useful String Operations</h4>
+            
+            <pre><code># String methods (functions that work on strings)
+name = "John Doe"
+
+# Convert to uppercase or lowercase
+print(name.upper())  # Prints: JOHN DOE
+print(name.lower())  # Prints: john doe
+
+# Get the length of a string
+print(len(name))     # Prints: 8 (includes the space)
+
+# Check if a string contains something
+print("John" in name)  # Prints: True
+print("jane" in name)  # Prints: False
+
+# Replace parts of a string
+print(name.replace("John", "Jane"))  # Prints: Jane Doe
+
+# Split a string into a list
+print(name.split())  # Prints: ['John', 'Doe']</code></pre>
+
+            <h4>Accessing Individual Characters</h4>
+            
+            <p>You can access individual characters in a string using their position (index). In Python, indices start at 0, not 1!</p>
+            
+            <pre><code>name = "Python"
+
+# Accessing characters by index (position)
+print(name[0])  # First character: P
+print(name[1])  # Second character: y
+print(name[5])  # Last character: n
+
+# Negative indices count from the end
+print(name[-1])  # Last character: n
+print(name[-2])  # Second-to-last character: o
+
+# Slicing (getting a range of characters)
+print(name[0:2])   # Characters from index 0 to 1: Py
+print(name[2:5])   # Characters from index 2 to 4: tho
+print(name[:3])    # First 3 characters: Pyt
+print(name[3:])    # Everything from index 3 onwards: hon</code></pre>
+
+            <div style="text-align: center; margin: 20px 0;">
+                <div style="display: inline-block; background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+                    <p style="margin: 0;"><strong>String Indexing:</strong></p>
+                    <table style="margin: 10px auto; text-align: center; border-collapse: collapse;">
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: #e7f3fe;">P</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: #e7f3fe;">y</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: #e7f3fe;">t</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: #e7f3fe;">h</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: #e7f3fe;">o</td>
+                            <td style="border: 1px solid #ddd; padding: 8px; background-color: #e7f3fe;">n</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">0</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">1</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">2</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">3</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">4</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">5</td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid #ddd; padding: 8px;">-6</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">-5</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">-4</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">-3</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">-2</td>
+                            <td style="border: 1px solid #ddd; padding: 8px;">-1</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <h3>Basic Math Operations: Python as a Calculator</h3>
+            
+            <p>Python can perform all the basic math operations you'd expect:</p>
+            
+            <pre><code># Basic arithmetic
+print(5 + 3)   # Addition: 8
+print(10 - 4)  # Subtraction: 6
+print(3 * 4)   # Multiplication: 12
+print(10 / 3)  # Division: 3.3333333333333335 (always returns a float)
+
+# More operations
+print(10 // 3) # Integer division (drops decimal part): 3
+print(10 % 3)  # Modulus (remainder after division): 1
+print(2 ** 3)  # Exponentiation (2 raised to power 3): 8
+
+# Order of operations is just like regular math (PEMDAS)
+print(2 + 3 * 4)    # Multiplication happens first: 14
+print((2 + 3) * 4)  # Parentheses change the order: 20</code></pre>
+
+            <div class="note">
+                <p><strong>Remember:</strong> The order of operations in Python follows PEMDAS:</p>
+                <ul style="margin-bottom: 0;">
+                    <li>P - Parentheses ()</li>
+                    <li>E - Exponents **</li>
+                    <li>M/D - Multiplication * and Division / (from left to right)</li>
+                    <li>A/S - Addition + and Subtraction - (from left to right)</li>
+                </ul>
+            </div>
+
+            <h4>Using Variables with Math</h4>
+
+            <pre><code># Math with variables
+x = 10
+y = 5
+
+print(x + y)    # 15
+print(x - y)    # 5
+print(x * y)    # 50
+print(x / y)    # 2.0
+
+# Update variables with calculations
+score = 0
+print("Initial score:", score)  # 0
+
+# Add 10 points
+score = score + 10  
+print("After adding 10:", score)  # 10
+
+# Shorthand way to add to a variable
+score += 5  # Same as: score = score + 5
+print("After adding 5 more:", score)  # 15
+
+# Other shorthand operators
+score *= 2  # Same as: score = score * 2
+print("After doubling:", score)  # 30</code></pre>
+            
+            <h3>Getting User Input: Making Interactive Programs</h3>
+            
+            <p>So far, we've been creating programs with fixed values. But most programs need to get information from the user. Python uses the <code>input()</code> function for this.</p>
+            
+            <pre><code># Basic input
+name = input("What's your name? ")
+print("Hello,", name + "!")
+
+# The input function shows a prompt and waits for user to type something
+# Whatever the user types is returned as a string</code></pre>
+
+            <div class="warning">
+                <p><strong>Important:</strong> The <code>input()</code> function <em>always</em> returns a string, even if the user types a number!</p>
+            </div>
+
+            <h4>Converting Input to Numbers</h4>
+
+            <pre><code># Getting numeric input
+age_string = input("How old are you? ")
+print("You entered:", age_string)
+
+# Try adding 1 to age_string
+# This would cause an error: print(age_string + 1)
+# Because age_string is a string, not a number
+
+# Convert string to integer
+age_number = int(age_string)  # Convert to integer
+next_year_age = age_number + 1
+print("Next year, you will be", next_year_age, "years old.")
+
+# All in one step
+height = float(input("How tall are you in meters? "))  # Convert directly to float
+print("In centimeters, that would be", height * 100, "cm")</code></pre>
+
+            <div class="note">
+                <p><strong>Real-world example:</strong> Let's create a simple tip calculator</p>
+            </div>
+            
+            <pre><code># Simple tip calculator
+print("Welcome to the Tip Calculator!")
+
+# Get the bill amount and convert to float
+bill = float(input("What was the total bill? $"))
+
+# Get the tip percentage and convert to float
+tip_percent = float(input("What percentage tip would you like to give? "))
+
+# Calculate tip and total
+tip_amount = bill * (tip_percent / 100)
+total = bill + tip_amount
+
+# Display results
+print(f"Tip amount: ${tip_amount:.2f}")  # :.2f means show 2 decimal places
+print(f"Total bill: ${total:.2f}")</code></pre>
+            
+            <h3>Type Conversion: Changing Data Types</h3>
+            
+            <p>Sometimes you need to convert data from one type to another. Python provides built-in functions for this:</p>
+            
+            <pre><code># Converting between data types
+# String to number
+age_str = "25"
+age_int = int(age_str)    # Convert to integer: 25
+price_str = "19.99"
+price_float = float(price_str)  # Convert to float: 19.99
+
+# Number to string
+count = 42
+count_str = str(count)    # Convert to string: "42"
+print("You have " + count_str + " messages.")  # Now we can use + with strings
+
+# Float to integer (cuts off decimal part)
+height = 5.9
+height_int = int(height)  # Result: 5 (decimal part is removed, not rounded)
+print(height_int)
+
+# Boolean conversions
+print(bool(0))      # False (zero converts to False)
+print(bool(1))      # True (non-zero numbers convert to True)
+print(bool(""))     # False (empty string converts to False)
+print(bool("text")) # True (non-empty strings convert to True)</code></pre>
+
+            <div class="warning">
+                <p><strong>Common error:</strong> If you try to convert a string that doesn't represent a valid number (like converting "hello" to an integer), Python will raise an error.</p>
+            </div>
+            
+            <h3>Understanding Print Options: Formatting Your Output</h3>
+            
+            <p>The <code>print()</code> function is more flexible than it might first appear:</p>
+            
+            <pre><code># Basic print
+print("Hello, World!")  # Prints: Hello, World!
+
+# Print multiple items (separated by spaces automatically)
+name = "Alice"
+age = 25
+print("Name:", name, "Age:", age)  # Prints: Name: Alice Age: 25
+
+# Concatenation vs. comma-separated values
+print("Age: " + str(age))  # Concatenation requires converting numbers to strings
+print("Age:", age)         # With comma, print handles different types automatically
+
+# Changing the separator
+print("apple", "banana", "cherry")         # Default: apple banana cherry
+print("apple", "banana", "cherry", sep=", ")  # Custom: apple, banana, cherry
+print("apple", "banana", "cherry", sep="-")   # Custom: apple-banana-cherry
+
+# Changing the ending (default is newline)
+print("Hello", end=" ")
+print("World!")  # Prints: Hello World!
+
+# Formatting with f-strings (Python 3.6+)
+name = "Bob"
+age = 30
+print(f"{name} is {age} years old")  # Bob is 30 years old
+
+# Formatting numbers in f-strings
+pi = 3.14159
+print(f"Pi rounded to 2 decimal places: {pi:.2f}")  # Pi rounded to 2 decimal places: 3.14
+print(f"Pi as a percentage: {pi:.1%}")             # Pi as a percentage: 314.2%</code></pre>
+            
+            <h3>Summary</h3>
+            
+            <p>In this lesson, you learned:</p>
+            <ul>
+                <li>How to use comments to explain your code</li>
+                <li>How to create and name variables to store different types of data</li>
+                <li>The basic data types in Python: strings, integers, floats, and booleans</li>
+                <li>How to work with strings (concatenation, methods, indexing)</li>
+                <li>How to perform basic mathematical operations</li>
+                <li>How to get input from the user and convert between data types</li>
+                <li>Different ways to format output with the print function</li>
+            </ul>
+
+            <div class="note">
+                <p><strong>What's next?</strong> In the next lesson, we'll learn about control flow - how to make decisions in your code with if/else statements!</p>
+            </div>
+            
+            <h3>Practice Exercises</h3>
+            
+            <div class="note">
+                <p><strong>Try these exercises using the interactive editor below:</strong></p>
+            </div>
+            
+            <div class="interactive-python" data-code="# Exercise: Personal Information Card
+# Write a program that asks for name, age, and favorite color,
+# then displays a formatted message with this information.
+
+# Tip: You can use the input() function in a real Python environment,
+# but for this online editor, let's just set the variables directly:
+
+name = 'Alice'
+age = 25
+favorite_color = 'blue'
+
+# Your code goes here:
+print('--- Personal Information Card ---')
+# Complete the code to display the information in a nice format">
+            </div>
+            
+            <ol>
+                <li><strong>Personal Information Card:</strong> Write a program that asks for a user's name, age, and favorite color, then displays a formatted message with this information.</li>
+                <li><strong>Rectangle Calculator:</strong> Create a program that asks for the length and width of a rectangle, then calculates and displays both its area (length × width) and perimeter (2 × length + 2 × width).</li>
+                <li><strong>Temperature Converter:</strong> Create a program that converts temperature from Celsius to Fahrenheit using the formula: F = (C × 9/5) + 32</li>
+                <li><strong>Shopping List Total:</strong> Write a program that asks for the price of three items, then calculates the total cost.</li>
+                <li><strong>Time Converter:</strong> Create a program that converts minutes to hours and minutes (e.g., 135 minutes = 2 hours and 15 minutes).</li>
+            </ol>
+            
+            <div class="nav-buttons">
+                <a href="01-getting-started.html" class="btn">Previous: Getting Started</a>
+                <a href="03-control-flow.html" class="btn">Next: Control Flow</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+
+    <script type="text/python">
+    from browser import document, console
+    import sys
+    
+    # Find all editor containers
+    editor_containers = document.select(".editor-container")
+    
+    # Store original code for each editor
+    original_codes = {}
+    
+    # Custom output handler
+    class OutputHandler:
+        def __init__(self, element_id):
+            self.element = document[element_id]
+            
+        def write(self, text):
+            self.element.innerHTML += text.replace("\n", "<br>")
+            
+        def flush(self):
+            pass
+    
+    # Function to run code for a specific editor
+    def create_run_handler(editor_id, output_id):
+        def run_handler(event):
+            # Clear the output
+            document[output_id].innerHTML = ""
+            
+            # Get the code from the editor
+            code = document[editor_id].value
+            
+            # Store original stdout and stderr
+            original_stdout = sys.stdout
+            original_stderr = sys.stderr
+            
+            try:
+                # Redirect output
+                sys.stdout = OutputHandler(output_id)
+                sys.stderr = OutputHandler(output_id)
+                
+                # Execute the code
+                exec(code)
+                
+            except Exception as e:
+                document[output_id].innerHTML += f'<span style="color: red;">Error: {str(e)}</span>'
+                
+            finally:
+                # Restore stdout and stderr
+                sys.stdout = original_stdout
+                sys.stderr = original_stderr
+                
+        return run_handler
+    
+    # Function to reset a specific editor
+    def create_reset_handler(editor_id, output_id, original_code):
+        def reset_handler(event):
+            document[editor_id].value = original_code
+            document[output_id].innerHTML = ""
+        return reset_handler
+    
+    # Set up all editors on the page
+    for i, container in enumerate(editor_containers):
+        # Get or create IDs
+        container_id = container.id
+        if not container_id:
+            container_id = f"editor-{i+1}"
+            container.id = container_id
+            
+        # Find or create elements
+        editor_id = f"code-editor-{i+1}"
+        output_id = f"code-output-{i+1}"
+        run_btn_id = f"run-btn-{i+1}"
+        reset_btn_id = f"reset-btn-{i+1}"
+        
+        # Store original code
+        if document[editor_id]:
+            original_codes[editor_id] = document[editor_id].value
+            
+            # Set up event handlers
+            document[run_btn_id].bind("click", create_run_handler(editor_id, output_id))
+            document[reset_btn_id].bind("click", create_reset_handler(editor_id, output_id, original_codes[editor_id]))
+    </script>
+</body>
+</html> 

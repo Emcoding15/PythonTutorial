@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser Compatibility Test | Python for Complete Beginners</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/editor-styles.css">
+    <!-- Brython CDN Links -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+    <style>
+        .test-section {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2b5b84;
+        }
+        
+        .browser-info {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+
+        .status {
+            margin-top: 10px;
+            padding: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .failure {
+            color: red;
+        }
+
+        .test-matrix {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .test-matrix th, .test-matrix td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        .test-matrix th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body onload="brython()">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>Browser Compatibility Test</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lessons/01-getting-started.html">Lessons</a></li>
+            <li><a href="lessons/exercises.html">Exercises</a></li>
+            <li><a href="lessons/resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="lesson-content">
+            <h2>Browser Compatibility Test</h2>
+            
+            <p>This page tests if the interactive Python code editors are working properly in your browser.</p>
+            
+            <div class="browser-info" id="browser-info">Detecting browser...</div>
+            <div id="browser-name">Unknown browser</div>
+            
+            <h3>Test Results</h3>
+            
+            <div class="test-section">
+                <h4>Python Feature Support</h4>
+                <div id="feature-status" class="status">Running tests...</div>
+            </div>
+            
+            <div class="test-section">
+                <h4>DOM Interaction</h4>
+                <div id="dom-status" class="status">Running tests...</div>
+                <div id="dom-test-area"></div>
+            </div>
+            
+            <h3>Interactive Editor Test</h3>
+            <p>Try running the code in the editor below to verify that the interactive code editors are working properly:</p>
+            
+            <div class="code-editor-container">
+                <textarea id="editor1" class="code-editor">
+# Basic Python demo
+print("Hello from Brython!")
+print("2 + 2 =", 2 + 2)
+
+# Create a list and loop through it
+fruits = ["apple", "banana", "cherry"]
+print("\nFruit list:")
+for i, fruit in enumerate(fruits):
+    print(f"{i+1}. {fruit}")
+
+# Simple function
+def greet(name):
+    return f"Hello, {name}!"
+
+# Call the function
+print("\n" + greet("Python Learner"))</textarea>
+                <div class="editor-controls">
+                    <button id="run1" class="run-button">Run</button>
+                    <button id="reset1" class="reset-button">Reset</button>
+                </div>
+                <div id="output1" class="code-output">Output will appear here...</div>
+            </div>
+            
+            <h3>Advanced Features Test</h3>
+            <p>Try this more advanced code that tests multiple Python features:</p>
+            
+            <div class="code-editor-container">
+                <textarea id="editor2" class="code-editor">
+# This code tests various Python features
+
+# Dictionary operations
+person = {
+    "name": "Alice",
+    "age": 30,
+    "skills": ["Python", "HTML", "CSS"]
+}
+
+print(f"Person: {person['name']}, Age: {person['age']}")
+print(f"Skills: {', '.join(person['skills'])}")
+
+# List comprehension
+numbers = [1, 2, 3, 4, 5]
+squares = [x**2 for x in numbers]
+print(f"\nOriginal numbers: {numbers}")
+print(f"Squares: {squares}")
+
+# Class definition
+class Calculator:
+    def __init__(self, a, b):
+        self.a = a
+        self.b = b
+        
+    def add(self):
+        return self.a + self.b
+        
+    def multiply(self):
+        return self.a * self.b
+
+# Create instance and use methods
+calc = Calculator(10, 5)
+print(f"\nCalculator: 10 + 5 = {calc.add()}")
+print(f"Calculator: 10 × 5 = {calc.multiply()}")</textarea>
+                <div class="editor-controls">
+                    <button id="run2" class="run-button">Run</button>
+                    <button id="reset2" class="reset-button">Reset</button>
+                </div>
+                <div id="output2" class="code-output">Output will appear here...</div>
+            </div>
+            
+            <h3>Error Handling Test</h3>
+            <p>This code contains errors to test how error handling works:</p>
+            
+            <div class="code-editor-container">
+                <textarea id="editor3" class="code-editor">
+# Code with errors to test error handling
+
+# Undefined variable
+print(x)  # NameError
+
+# Division by zero
+result = 10 / 0  # ZeroDivisionError
+
+# Syntax error
+if True
+    print("This has a missing colon")  # SyntaxError</textarea>
+                <div class="editor-controls">
+                    <button id="run3" class="run-button">Run</button>
+                    <button id="reset3" class="reset-button">Reset</button>
+                </div>
+                <div id="output3" class="code-output">Output will appear here...</div>
+            </div>
+            
+            <h3>Browser Compatibility Matrix</h3>
+            <table class="test-matrix">
+                <tr>
+                    <th>Feature</th>
+                    <th>Chrome</th>
+                    <th>Firefox</th>
+                    <th>Edge</th>
+                    <th>Safari</th>
+                </tr>
+                <tr>
+                    <td>Basic Python Execution</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>DOM Manipulation</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Error Handling</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Complex Data Structures</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Classes & OOP</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+            </table>
+            
+            <div class="note">
+                <p><strong>Note:</strong> If you encounter any issues, please try updating your browser to the latest version. Brython works best in modern browsers with up-to-date JavaScript engines.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+
+    <script type="text/python">
+    from browser import document, window, html
+    import sys
+    import traceback
+    
+    # Class to capture stdout
+    class OutputCatcher:
+        def __init__(self):
+            self.content = ''
+        
+        def write(self, text):
+            self.content += str(text)
+        
+        def clear(self):
+            self.content = ''
+    
+    # Create a global output catcher
+    output_catcher = OutputCatcher()
+    
+    # Store original code for each editor
+    editor_defaults = {}
+    
+    def run_code(event, editor_id):
+        # Clear previous output
+        output_catcher.clear()
+        output_id = editor_id.replace("editor", "output")
+        output = document[output_id]
+        output.textContent = ''
+        
+        # Get code from textarea
+        editor = document[editor_id]
+        code = editor.value
+        
+        # Redirect standard output
+        old_stdout = sys.stdout
+        sys.stdout = output_catcher
+        
+        try:
+            # Execute the code
+            exec(code)
+            
+            # Display the output
+            output_text = output_catcher.content
+            if output_text:
+                output.textContent = output_text
+            else:
+                output.textContent = "Code executed successfully with no output."
+        except Exception as e:
+            error_details = traceback.format_exc()
+            output.textContent = f"Error: {e}\n\n{error_details}"
+        
+        # Reset stdout
+        sys.stdout = old_stdout
+    
+    def reset_editor(event, editor_id):
+        editor = document[editor_id]
+        output_id = editor_id.replace("editor", "output")
+        output = document[output_id]
+        
+        # Reset editor to default content
+        if editor_id in editor_defaults:
+            editor.value = editor_defaults[editor_id]
+        
+        # Clear output
+        output.textContent = "Output will appear here..."
+    
+    def detect_browser():
+        # Get browser info from navigator
+        user_agent = window.navigator.userAgent
+        browser_info = document["browser-info"]
+        browser_info.textContent = f"User Agent: {user_agent}"
+        
+        # Try to detect browser name
+        if "Chrome" in user_agent and "Edg" not in user_agent and "OPR" not in user_agent:
+            browser_name = "Chrome"
+        elif "Firefox" in user_agent:
+            browser_name = "Firefox"
+        elif "Safari" in user_agent and "Chrome" not in user_agent:
+            browser_name = "Safari"
+        elif "Edg" in user_agent:
+            browser_name = "Edge"
+        elif "OPR" in user_agent:
+            browser_name = "Opera"
+        else:
+            browser_name = "Unknown"
+        
+        browser_elem = document["browser-name"]
+        browser_elem.textContent = f"Detected Browser: {browser_name}"
+    
+    def test_features():
+        status = document["feature-status"]
+        try:
+            # Test basic arithmetic
+            assert 2 + 2 == 4
+            
+            # Test string operations
+            assert "hello".upper() == "HELLO"
+            
+            # Test list operations
+            test_list = [1, 2, 3]
+            test_list.append(4)
+            assert len(test_list) == 4
+            assert test_list[-1] == 4
+            
+            # Test dictionary operations
+            test_dict = {"name": "Python", "version": 3.10}
+            test_dict["feature"] = "Brython"
+            assert test_dict["feature"] == "Brython"
+            
+            # Test f-strings
+            name = "Brython"
+            assert f"Hello {name}" == "Hello Brython"
+            
+            # Test list comprehension
+            squares = [x**2 for x in range(5)]
+            assert squares == [0, 1, 4, 9, 16]
+            
+            # Success
+            status.textContent = "✓ All Python feature tests passed"
+            status.className = "status success"
+        except Exception as e:
+            status.textContent = f"✗ Python feature test failed: {e}"
+            status.className = "status failure"
+    
+    def test_dom_interaction():
+        status = document["dom-status"]
+        try:
+            # Test DOM creation and manipulation
+            test_div = document["dom-test-area"]
+            test_div.innerHTML = ''
+            
+            # Create a paragraph element
+            p = html.P("This paragraph was created by Python")
+            test_div <= p
+            
+            # Create a button and attach event
+            btn = html.BUTTON("Click Me")
+            btn.bind("click", test_button_click)
+            test_div <= btn
+            
+            # Success
+            status.textContent = "✓ DOM interaction test passed"
+            status.className = "status success"
+        except Exception as e:
+            status.textContent = f"✗ DOM interaction test failed: {e}"
+            status.className = "status failure"
+    
+    def test_button_click(event):
+        test_div = document["dom-test-area"]
+        test_div <= html.P("Button click event worked!")
+    
+    def setup_editors():
+        # Find all code editors
+        editors = document.select("textarea.code-editor")
+        
+        # Set up each editor
+        for editor in editors:
+            editor_id = editor.id
+            
+            # Store default code
+            editor_defaults[editor_id] = editor.value
+            
+            # Set up run button
+            run_button_id = editor_id.replace("editor", "run")
+            if run_button_id in document:
+                run_button = document[run_button_id]
+                run_button.bind("click", lambda e, eid=editor_id: run_code(e, eid))
+            
+            # Set up reset button
+            reset_button_id = editor_id.replace("editor", "reset")
+            if reset_button_id in document:
+                reset_button = document[reset_button_id]
+                reset_button.bind("click", lambda e, eid=editor_id: reset_editor(e, eid))
+    
+    # Initialize everything
+    detect_browser()
+    test_features()
+    test_dom_interaction()
+    setup_editors()
+    </script>
+</body>
+</html> 

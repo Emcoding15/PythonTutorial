@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Flow | Python for Complete Beginners</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/editor-styles.css">
+    
+    <!-- Brython Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+</head>
+<body onload="brython({debug: 1})">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>A step-by-step guide to learning Python with no prior programming experience</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="01-getting-started.html">Lessons</a></li>
+            <li><a href="exercises.html">Exercises</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="lesson-content">
+            <h2>Lesson 3: Control Flow</h2>
+            
+            <div class="note">
+                <p><strong>In this lesson:</strong> We'll learn how to make your programs make decisions and respond differently based on conditions.</p>
+            </div>
+
+            <h3>Making Decisions with Conditional Statements</h3>
+            
+            <p>In real life, we make decisions all the time based on conditions:</p>
+            <ul>
+                <li><strong>IF</strong> it's raining, <strong>THEN</strong> I'll bring an umbrella.</li>
+                <li><strong>IF</strong> it's cold, <strong>THEN</strong> I'll wear a jacket, <strong>ELSE</strong> I'll wear a t-shirt.</li>
+                <li><strong>IF</strong> I'm hungry <strong>AND</strong> I have food, <strong>THEN</strong> I'll eat.</li>
+            </ul>
+            
+            <p>Python allows your programs to make decisions in a similar way using <strong>if statements</strong>.</p>
+
+            <h3>Basic If Statements</h3>
+            
+            <p>The simplest form of decision-making in Python uses the <code>if</code> statement:</p>
+            
+            <pre><code>if condition:
+    # Code to run if the condition is True</code></pre>
+            
+            <p>For example:</p>
+            
+            <pre><code># Simple if statement
+temperature = 30  # temperature in Celsius
+
+if temperature > 25:
+    print("It's hot today!")
+    print("Remember to drink water.")</code></pre>
+            
+            <div class="note">
+                <p><strong>Important:</strong> In Python, indentation (the spaces at the beginning of a line) is crucial! The indented lines after the <code>if</code> statement only run if the condition is True.</p>
+            </div>
+            
+            <div class="interactive-python" data-code="# Try changing the temperature value to see what happens
+temperature = 30
+
+if temperature > 25:
+    print('It\'s hot today!')
+    print('Remember to drink water.')
+    
+# Change the temperature to 20 and run again
+# temperature = 20">
+            </div>
+
+            <h3>If-Else Statements</h3>
+            
+            <p>Often you want your program to do one thing if a condition is True, and something else if it's False. This is where <code>else</code> comes in:</p>
+            
+            <pre><code># If-Else statement
+temperature = 20  # temperature in Celsius
+
+if temperature > 25:
+    print("It's hot today!")
+    print("Remember to drink water.")
+else:
+    print("It's not very hot today.")
+    print("Enjoy the mild weather!")</code></pre>
+            
+            <div class="interactive-python" data-code="# Try this example
+age = 15
+
+if age >= 18:
+    print('You are an adult.')
+    print('You can vote!')
+else:
+    print('You are a minor.')
+    print('You cannot vote yet.')
+    
+# Try changing the age to 20 and run again">
+            </div>
+
+            <h3>If-Elif-Else Statements</h3>
+            
+            <p>What if you have more than two possibilities? That's where <code>elif</code> (short for "else if") comes in:</p>
+            
+            <pre><code># If-Elif-Else statement
+temperature = 20  # temperature in Celsius
+
+if temperature > 30:
+    print("It's very hot today!")
+    print("Stay hydrated and avoid the midday sun.")
+elif temperature > 20:  # This is checked only if the first condition is False
+    print("It's a warm day.")
+    print("Perfect for outdoor activities.")
+elif temperature > 10:  # This is checked only if the previous conditions are False
+    print("It's a bit cool.")
+    print("You might need a light jacket.")
+else:  # This runs if all conditions above are False
+    print("It's cold!")
+    print("Wear a warm coat.")</code></pre>
+            
+            <p>You can have as many <code>elif</code> blocks as you need.</p>
+            
+            <div class="interactive-python" data-code="# Test this grading system
+score = 85
+
+if score >= 90:
+    print('Grade: A')
+    print('Excellent work!')
+elif score >= 80:
+    print('Grade: B')
+    print('Good job!')
+elif score >= 70:
+    print('Grade: C')
+    print('Satisfactory.')
+elif score >= 60:
+    print('Grade: D')
+    print('Needs improvement.')
+else:
+    print('Grade: F')
+    print('Please study more.')
+    
+# Try changing the score and see how the grade changes">
+            </div>
+
+            <h3>Comparison Operators</h3>
+            
+            <p>To create conditions, we need comparison operators:</p>
+            
+            <table>
+                <tr>
+                    <th>Operator</th>
+                    <th>Description</th>
+                    <th>Example</th>
+                </tr>
+                <tr>
+                    <td><code>==</code></td>
+                    <td>Equal to</td>
+                    <td><code>a == b</code></td>
+                </tr>
+                <tr>
+                    <td><code>!=</code></td>
+                    <td>Not equal to</td>
+                    <td><code>a != b</code></td>
+                </tr>
+                <tr>
+                    <td><code>&gt;</code></td>
+                    <td>Greater than</td>
+                    <td><code>a &gt; b</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;</code></td>
+                    <td>Less than</td>
+                    <td><code>a &lt; b</code></td>
+                </tr>
+                <tr>
+                    <td><code>&gt;=</code></td>
+                    <td>Greater than or equal to</td>
+                    <td><code>a &gt;= b</code></td>
+                </tr>
+                <tr>
+                    <td><code>&lt;=</code></td>
+                    <td>Less than or equal to</td>
+                    <td><code>a &lt;= b</code></td>
+                </tr>
+            </table>
+            
+            <div class="warning">
+                <p><strong>Common Mistake:</strong> Don't confuse <code>==</code> (comparison for equality) with <code>=</code> (assignment). The first checks if two values are equal, while the second assigns a value to a variable.</p>
+            </div>
+            
+            <div class="interactive-python" data-code="# Let's experiment with comparison operators
+a = 10
+b = 5
+
+print('a =', a, 'and b =', b)
+print('a == b:', a == b)  # Is a equal to b?
+print('a != b:', a != b)  # Is a not equal to b?
+print('a > b:', a > b)    # Is a greater than b?
+print('a < b:', a < b)    # Is a less than b?
+print('a >= b:', a >= b)  # Is a greater than or equal to b?
+print('a <= b:', a <= b)  # Is a less than or equal to b?
+
+# Try changing the values of a and b">
+            </div>
+
+            <h3>Logical Operators</h3>
+            
+            <p>Sometimes we need to combine multiple conditions. Python provides logical operators for this:</p>
+            
+            <ul>
+                <li><code>and</code> - True if both conditions are True</li>
+                <li><code>or</code> - True if at least one condition is True</li>
+                <li><code>not</code> - Inverts the condition (True becomes False, False becomes True)</li>
+            </ul>
+            
+            <pre><code># Using logical operators
+age = 25
+has_license = True
+
+if age >= 18 and has_license:
+    print("You can drive a car.")
+else:
+    print("You cannot drive a car.")</code></pre>
+            
+            <div class="interactive-python" data-code="# Let's check if someone can enter a club
+age = 19
+is_vip = False
+
+# Regular condition: 21+ can enter
+# VIP condition: 18+ can enter
+# Let's see what happens:
+
+if age >= 21 or (age >= 18 and is_vip):
+    print('Welcome to the club!')
+else:
+    print('Sorry, you cannot enter.')
+    
+# Try changing age to 20 and is_vip to True
+# Then try age 17 and is_vip True">
+            </div>
+            
+            <h3>Nested If Statements</h3>
+            
+            <p>You can place if statements inside other if statements to create more complex decision structures:</p>
+            
+            <pre><code># Nested if statements
+age = 25
+has_license = True
+
+if age >= 18:
+    print("You are an adult.")
+    
+    if has_license:
+        print("You can drive a car.")
+    else:
+        print("You cannot drive a car because you don't have a license.")
+else:
+    print("You cannot drive a car because you are not an adult.")</code></pre>
+            
+            <div class="interactive-python" data-code="# Weather activity recommendation system
+temperature = 22
+is_raining = False
+
+if temperature > 25:
+    if is_raining:
+        print('It\'s hot but raining.')
+        print('Visit an indoor water park.')
+    else:
+        print('It\'s hot and not raining.')
+        print('Go swimming!')
+else:
+    if is_raining:
+        print('It\'s cool and raining.')
+        print('Stay inside with a good book.')
+    else:
+        print('It\'s cool but not raining.')
+        print('Go for a pleasant walk.')
+        
+# Try different combinations of temperature and is_raining">
+            </div>
+            
+            <h3>Practice Exercises</h3>
+            
+            <div class="interactive-python" data-code="# Exercise: Age Group Categorizer
+# Write a program that categorizes people into age groups:
+# 0-12: Child
+# 13-19: Teenager
+# 20-64: Adult
+# 65+: Senior
+
+age = 25
+
+# Your code goes here:
+# (Write an if-elif-else structure to print the correct category)">
+            </div>
+            
+            <ol>
+                <li><strong>Age Group Categorizer:</strong> Write a program that categorizes people into age groups: Child (0-12), Teenager (13-19), Adult (20-64), and Senior (65+).</li>
+                <li><strong>Movie Ticket Pricer:</strong> Create a program that calculates movie ticket prices based on age: Children (0-12): $5, Teenagers (13-17): $8, Adults (18+): $12, and Seniors (65+): $7.</li>
+                <li><strong>Weather Outfit Recommender:</strong> Write a program that recommends what to wear based on temperature and weather conditions (sunny, rainy, snowy).</li>
+                <li><strong>Password Checker:</strong> Create a simple program that checks if a password meets certain criteria: at least 8 characters and contains both letters and numbers.</li>
+                <li><strong>Grade Calculator:</strong> Write a program that converts a numerical score (0-100) to a letter grade (A, B, C, D, F).</li>
+            </ol>
+            
+            <div class="nav-buttons">
+                <a href="02-python-basics.html" class="btn">Previous: Python Basics</a>
+                <a href="04-loops.html" class="btn">Next: Loops</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+
+    <script type="text/python">
+    from browser import document, console
+    import sys
+    
+    # Find all editor containers
+    editor_containers = document.select(".editor-container")
+    
+    # Store original code for each editor
+    original_codes = {}
+    
+    # Custom output handler
+    class OutputHandler:
+        def __init__(self, element_id):
+            self.element = document[element_id]
+            
+        def write(self, text):
+            self.element.innerHTML += text.replace("\n", "<br>")
+            
+        def flush(self):
+            pass
+    
+    # Function to run code for a specific editor
+    def create_run_handler(editor_id, output_id):
+        def run_handler(event):
+            # Clear the output
+            document[output_id].innerHTML = ""
+            
+            # Get the code from the editor
+            code = document[editor_id].value
+            
+            # Store original stdout and stderr
+            original_stdout = sys.stdout
+            original_stderr = sys.stderr
+            
+            try:
+                # Redirect output
+                sys.stdout = OutputHandler(output_id)
+                sys.stderr = OutputHandler(output_id)
+                
+                # Execute the code
+                exec(code)
+                
+            except Exception as e:
+                document[output_id].innerHTML += f'<span style="color: red;">Error: {str(e)}</span>'
+                
+            finally:
+                # Restore stdout and stderr
+                sys.stdout = original_stdout
+                sys.stderr = original_stderr
+                
+        return run_handler
+    
+    # Function to reset a specific editor
+    def create_reset_handler(editor_id, output_id, original_code):
+        def reset_handler(event):
+            document[editor_id].value = original_code
+            document[output_id].innerHTML = ""
+        return reset_handler
+    
+    # Set up all editors on the page
+    for i, container in enumerate(editor_containers):
+        # Get or create IDs
+        container_id = container.id
+        if not container_id:
+            container_id = f"editor-{i+1}"
+            container.id = container_id
+            
+        # Find or create elements
+        editor_id = f"code-editor-{i+1}"
+        output_id = f"code-output-{i+1}"
+        run_btn_id = f"run-btn-{i+1}"
+        reset_btn_id = f"reset-btn-{i+1}"
+        
+        # Store original code
+        if document[editor_id]:
+            original_codes[editor_id] = document[editor_id].value
+            
+            # Set up event handlers
+            document[run_btn_id].bind("click", create_run_handler(editor_id, output_id))
+            document[reset_btn_id].bind("click", create_reset_handler(editor_id, output_id, original_codes[editor_id]))
+    </script>
+</body>
+</html> 

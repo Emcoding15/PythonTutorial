@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Resources | Python for Complete Beginners</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/editor-styles.css">
+    <!-- Brython CDN Links -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+    <style>
+        .resource-section {
+            margin-bottom: 30px;
+        }
+        
+        .resource-card {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .resource-card h4 {
+            color: #2b5b84;
+            margin-top: 0;
+        }
+        
+        .resource-card p {
+            margin-bottom: 10px;
+        }
+        
+        .resource-link {
+            color: #2b5b84;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+    <script type="text/python">
+        from browser import document, window, html
+        import sys
+        
+        def run_code(event, editor_id):
+            editor = document[editor_id]
+            output_id = editor_id.replace("editor", "output")
+            output = document[output_id]
+            
+            # Clear the output area
+            output.clear()
+            
+            # Get the code from editor
+            code = editor.value
+            
+            try:
+                # Redirect stdout to capture print statements
+                old_stdout = sys.stdout
+                sys.stdout = buffer = StringIO()
+                
+                # Execute the code
+                exec(code)
+                
+                # Get the output and display it
+                output_text = buffer.getvalue()
+                if output_text:
+                    output.text = output_text
+                else:
+                    output.text = "Code executed successfully with no output."
+                
+                # Restore stdout
+                sys.stdout = old_stdout
+                
+            except Exception as e:
+                output.text = f"Error: {e}"
+        
+        def reset_editor(event, editor_id, default_code):
+            editor = document[editor_id]
+            output_id = editor_id.replace("editor", "output")
+            output = document[output_id]
+            
+            # Reset the editor content
+            editor.value = default_code
+            
+            # Clear the output
+            output.clear()
+            output.text = "Output will appear here..."
+            
+        # StringIO class to capture stdout
+        class StringIO:
+            def __init__(self):
+                self.buffer = []
+                
+            def write(self, s):
+                self.buffer.append(str(s))
+                
+            def getvalue(self):
+                return "".join(self.buffer)
+        
+        def setup_editors():
+            # This page doesn't have any editors to set up
+            pass
+            
+        # Setup all editors when the page loads
+        document.addEventListener("DOMContentLoaded", lambda event: setup_editors())
+    </script>
+</head>
+<body onload="brython({debug: 1, indexedDB: false})">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>A step-by-step guide to learning Python with no prior programming experience</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="01-getting-started.html">Lessons</a></li>
+            <li><a href="exercises.html">Exercises</a></li>
+            <li><a href="resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="lesson-content">
+            <h2>Python Learning Resources</h2>
+            
+            <p>Below is a curated collection of additional resources to help you continue your Python journey beyond this tutorial.</p>
+            
+            <h3>Official Documentation</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Python Official Documentation</h4>
+                    <p>The official Python documentation is comprehensive and includes tutorials, the language reference, and the standard library.</p>
+                    <a href="https://docs.python.org/3/" class="resource-link" target="_blank">Visit Python Documentation</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Python Beginner's Guide</h4>
+                    <p>The official Python.org beginner's guide provides an introduction to Python for people who have little or no programming experience.</p>
+                    <a href="https://www.python.org/about/gettingstarted/" class="resource-link" target="_blank">Visit Python Beginner's Guide</a>
+                </div>
+            </div>
+            
+            <h3>Free Online Courses</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Codecademy - Learn Python</h4>
+                    <p>An interactive platform that offers free coding classes in Python.</p>
+                    <a href="https://www.codecademy.com/learn/learn-python-3" class="resource-link" target="_blank">Visit Codecademy</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>freeCodeCamp - Python Course</h4>
+                    <p>A free, comprehensive Python course with video tutorials and programming challenges.</p>
+                    <a href="https://www.freecodecamp.org/learn/scientific-computing-with-python/" class="resource-link" target="_blank">Visit freeCodeCamp</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Google's Python Class</h4>
+                    <p>A free class for people with a little bit of programming experience who want to learn Python.</p>
+                    <a href="https://developers.google.com/edu/python" class="resource-link" target="_blank">Visit Google's Python Class</a>
+                </div>
+            </div>
+            
+            <h3>Interactive Learning Platforms</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Exercism</h4>
+                    <p>Improve your coding skills with programming exercises and mentorship, free forever.</p>
+                    <a href="https://exercism.io/tracks/python" class="resource-link" target="_blank">Visit Exercism</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Codewars</h4>
+                    <p>Improve your skills by training with others on code challenges called kata.</p>
+                    <a href="https://www.codewars.com/" class="resource-link" target="_blank">Visit Codewars</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Replit</h4>
+                    <p>An online IDE where you can code, create, and learn together.</p>
+                    <a href="https://replit.com/" class="resource-link" target="_blank">Visit Replit</a>
+                </div>
+            </div>
+            
+            <h3>Helpful YouTube Channels</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Corey Schafer</h4>
+                    <p>Detailed Python tutorials focusing on explaining concepts and building real projects.</p>
+                    <a href="https://www.youtube.com/user/schafer5" class="resource-link" target="_blank">Visit Channel</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Sentdex</h4>
+                    <p>Python programming tutorials for a wide range of projects including machine learning, web development, and data analysis.</p>
+                    <a href="https://www.youtube.com/user/sentdex" class="resource-link" target="_blank">Visit Channel</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Programming with Mosh</h4>
+                    <p>Clear, concise Python tutorials with practical examples.</p>
+                    <a href="https://www.youtube.com/c/programmingwithmosh" class="resource-link" target="_blank">Visit Channel</a>
+                </div>
+            </div>
+            
+            <h3>Books for Beginners</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Automate the Boring Stuff with Python</h4>
+                    <p>A practical programming guide for total beginners by Al Sweigart. Available to read for free online.</p>
+                    <a href="https://automatetheboringstuff.com/" class="resource-link" target="_blank">Read Online</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Python Crash Course</h4>
+                    <p>A hands-on, project-based introduction to programming by Eric Matthes.</p>
+                    <a href="https://nostarch.com/pythoncrashcourse2e" class="resource-link" target="_blank">View Book</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Think Python</h4>
+                    <p>How to Think Like a Computer Scientist by Allen B. Downey. Available for free online.</p>
+                    <a href="https://greenteapress.com/thinkpython2/html/index.html" class="resource-link" target="_blank">Read Online</a>
+                </div>
+            </div>
+            
+            <h3>Project Ideas</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Beginner Python Project Ideas</h4>
+                    <p>Here are some project ideas to practice your Python skills:</p>
+                    <ul>
+                        <li>To-do list application</li>
+                        <li>Weather forecast app using an API</li>
+                        <li>Simple calculator with GUI</li>
+                        <li>Text-based adventure game</li>
+                        <li>Password generator</li>
+                        <li>Contact book</li>
+                        <li>Currency converter</li>
+                        <li>Rock-paper-scissors game</li>
+                        <li>Simple web scraper</li>
+                        <li>Expense tracker</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Python Communities</h3>
+            <div class="resource-section">
+                <div class="resource-card">
+                    <h4>Reddit - r/learnpython</h4>
+                    <p>A subreddit for posting questions and sharing resources about learning Python.</p>
+                    <a href="https://www.reddit.com/r/learnpython/" class="resource-link" target="_blank">Visit r/learnpython</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Stack Overflow - Python</h4>
+                    <p>A question and answer site for programmers. Search for solutions or ask your own questions.</p>
+                    <a href="https://stackoverflow.com/questions/tagged/python" class="resource-link" target="_blank">Visit Stack Overflow</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>Python Discord</h4>
+                    <p>A community-run Discord server for Python programmers of all experience levels.</p>
+                    <a href="https://pythondiscord.com/" class="resource-link" target="_blank">Join Python Discord</a>
+                </div>
+            </div>
+            
+            <div class="note">
+                <p><strong>Remember:</strong> The best way to learn programming is by practicing consistently. Try to code something, even if small, every day!</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+</body>
+</html> 

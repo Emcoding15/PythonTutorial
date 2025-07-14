@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python for Complete Beginners</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/editor-styles.css">
+    
+    <!-- Brython Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+</head>
+<body onload="brython()">
+    <header>
+        <h1>Python for Complete Beginners</h1>
+        <p>A step-by-step guide to learning Python with no prior programming experience</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="lessons/01-getting-started.html">Lessons</a></li>
+            <li><a href="lessons/exercises.html">Exercises</a></li>
+            <li><a href="lessons/resources.html">Resources</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <div class="hero">
+            <h2>Welcome to Python Programming!</h2>
+            <p>This tutorial is designed for absolute beginners with no previous programming experience.</p>
+            <p>You'll learn Python step-by-step with simple explanations, helpful visualizations, and interactive examples you can try right in your browser!</p>
+            <a href="lessons/01-getting-started.html" class="btn btn-primary">Start Learning Now</a>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>🧩 Beginner-Friendly</h3>
+                <p>Clear explanations with no technical jargon. Everything is explained in simple terms anyone can understand.</p>
+            </div>
+            <div class="feature">
+                <h3>💻 Interactive Examples</h3>
+                <p>Try Python code directly in your browser! No installation required - write and run code as you learn.</p>
+            </div>
+            <div class="feature">
+                <h3>📝 Hands-on Practice</h3>
+                <p>Plenty of exercises to reinforce your learning and build confidence in your programming skills.</p>
+            </div>
+            <div class="feature">
+                <h3>🎓 Step-by-Step Learning</h3>
+                <p>Carefully structured lessons that build upon each other, ensuring you never feel lost or overwhelmed.</p>
+            </div>
+        </div>
+        
+        <div class="lessons-preview">
+            <h2>What You'll Learn</h2>
+            <div class="lesson-cards">
+                <div class="lesson-card">
+                    <h3>Lesson 1: Getting Started</h3>
+                    <p>Learn what Python is, install it on your computer, and write your first program!</p>
+                    <a href="lessons/01-getting-started.html" class="btn">Start Lesson</a>
+                </div>
+                <div class="lesson-card">
+                    <h3>Lesson 2: Python Basics</h3>
+                    <p>Understand variables, data types, and how to work with text and numbers.</p>
+                    <a href="lessons/02-python-basics.html" class="btn">Start Lesson</a>
+                </div>
+                <div class="lesson-card">
+                    <h3>Lesson 3: Control Flow</h3>
+                    <p>Make your programs make decisions using conditions and if-statements.</p>
+                    <a href="lessons/03-control-flow.html" class="btn">Start Lesson</a>
+                </div>
+                <div class="lesson-card">
+                    <h3>Coming Soon: More Lessons</h3>
+                    <p>Loops, functions, lists, dictionaries, file handling, and more!</p>
+                    <span class="btn disabled">Coming Soon</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="try-it-now">
+            <h2>Try Python Right Now!</h2>
+            <p>Here's a simple interactive example to get you started:</p>
+            
+            <div class="editor-container">
+                <div class="editor-header">
+                    <span>Python Code Editor</span>
+                    <div class="editor-buttons">
+                        <button id="run-btn" class="run-btn">Run Code</button>
+                        <button id="reset-btn" class="reset-btn">Reset</button>
+                    </div>
+                </div>
+                <textarea id="code-editor" class="code-editor"># Welcome to Python!
+# This is a comment - it's ignored by Python
+
+# Let's print a greeting
+print("Hello! Welcome to Python programming.")
+
+# Let's do some simple math
+print("2 + 3 =", 2 + 3)
+print("10 - 7 =", 10 - 7)
+print("4 × 5 =", 4 * 5)
+
+# Let's create a variable
+name = "Python Learner"
+print("Nice to meet you,", name)</textarea>
+                <div class="output-header">Output:</div>
+                <div id="code-output" class="code-output"></div>
+            </div>
+            
+            <p>This is just a taste of what Python can do! Start the lessons to learn much more.</p>
+            <a href="lessons/01-getting-started.html" class="btn btn-primary">Begin Your Python Journey</a>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Python for Complete Beginners Tutorial</p>
+    </footer>
+
+    <script type="text/python">
+    from browser import document, console
+    import sys
+    
+    # Class to capture stdout
+    class OutputCatcher:
+        def __init__(self):
+            self.content = ''
+        
+        def write(self, text):
+            self.content += str(text)
+        
+        def clear(self):
+            self.content = ''
+    
+    # Create a global output catcher
+    output_catcher = OutputCatcher()
+    
+    # Store the original code
+    original_code = document["code-editor"].value
+    
+    # Function to run the code
+    def run_code(event):
+        # Clear the output
+        output_catcher.clear()
+        document["code-output"].innerHTML = ""
+        
+        # Get the code from the editor
+        code = document["code-editor"].value
+        
+        # Store original stdout and stderr
+        old_stdout = sys.stdout
+        
+        try:
+            # Redirect output
+            sys.stdout = output_catcher
+            
+            # Execute the code
+            exec(code)
+            
+            # Display the output
+            output_text = output_catcher.content
+            if output_text:
+                document["code-output"].innerHTML = output_text.replace("\n", "<br>")
+            else:
+                document["code-output"].innerHTML = "Code executed successfully with no output."
+            
+        except Exception as e:
+            document["code-output"].innerHTML = f'<span style="color: red;">Error: {str(e)}</span>'
+            
+        finally:
+            # Restore stdout
+            sys.stdout = old_stdout
+    
+    # Function to reset the editor
+    def reset_code(event):
+        document["code-editor"].value = original_code
+        document["code-output"].innerHTML = ""
+    
+    # Attach event handlers
+    document["run-btn"].bind("click", run_code)
+    document["reset-btn"].bind("click", reset_code)
+    </script>
+</body>
+</html> 

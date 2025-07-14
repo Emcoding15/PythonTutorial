@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Final Brython Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/brython@3.10.7/brython_stdlib.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            font-family: monospace;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+        #output {
+            padding: 10px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            min-height: 50px;
+            margin-top: 10px;
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body onload="brython()">
+    <h1>Final Brython Test</h1>
+    <p>This is the simplest possible implementation to test Brython.</p>
+    
+    <textarea id="code">print("Hello from Brython!")
+print("2 + 2 =", 2 + 2)
+
+# Create a list and loop through it
+fruits = ["apple", "banana", "cherry"]
+print("\nFruit list:")
+for i, fruit in enumerate(fruits):
+    print(f"{i+1}. {fruit}")
+</textarea>
+    
+    <div>
+        <button id="run">Run</button>
+        <button id="clear">Clear</button>
+    </div>
+    
+    <div id="output">Output will appear here...</div>
+    
+    <script type="text/python">
+    from browser import document
+    import sys
+    
+    def run(event):
+        output = document["output"]
+        output.textContent = ""  # Clear previous output
+        
+        # Get code from textarea
+        code = document["code"].value
+        
+        # Capture stdout
+        class OutputCatcher:
+            def __init__(self):
+                self.content = ""
+            def write(self, text):
+                self.content += str(text)
+        
+        catcher = OutputCatcher()
+        old_stdout = sys.stdout
+        sys.stdout = catcher
+        
+        try:
+            # Run the code
+            exec(code)
+            
+            # Display output
+            output.textContent = catcher.content
+        except Exception as e:
+            output.textContent = f"Error: {e}"
+        finally:
+            # Restore stdout
+            sys.stdout = old_stdout
+    
+    def clear(event):
+        document["output"].textContent = "Output cleared."
+    
+    # Attach event handlers
+    document["run"].bind("click", run)
+    document["clear"].bind("click", clear)
+    </script>
+</body>
+</html> 
